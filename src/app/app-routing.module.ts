@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {WinesComponent} from "./wines/wines.component";
 import {ContactComponent} from "./contact/contact.component";
+import {WineDetailComponent} from "./wine-detail/wine-detail.component";
 
 const routes: Routes = [{
   path:'inicio',
@@ -16,8 +17,11 @@ const routes: Routes = [{
   path:'listavinos/:name',
   component:WinesComponent,
   pathMatch:'full'
-},
-  {
+},{
+  path:'listavinos/:wineId',
+  component:WineDetailComponent,
+  pathMatch:'full'
+},{
   path:'contacto',
   component:ContactComponent,
   pathMatch:'full'

@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PageTitleComponent } from './shared/page-title/page-title.component';
 import { WineCardComponent } from './shared/wine-card/wine-card.component';
 import {FormsModule} from "@angular/forms";
+import { WineDetailComponent } from './wine-detail/wine-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FormsModule} from "@angular/forms";
     WinesComponent,
     ContactComponent,
     PageTitleComponent,
-    WineCardComponent
+    WineCardComponent,
+    WineDetailComponent
   ],
   imports: [
     BrowserModule,
