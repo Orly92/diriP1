@@ -1,1 +1,9 @@
-<p>wines works!</p>
+<page-title [title]="'Vinos'"></page-title>
+
+<div class="row mb-4">
+  <div class="col col-md-4 mb-2" *ngFor="let wine of wines">
+    <wine-card [wine]="wine"></wine-card>
+  </div>
+</div>
+
+

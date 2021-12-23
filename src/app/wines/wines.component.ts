@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WinesService} from "../shared/wines-services/wines.service";
 
 @Component({
   selector: 'wines',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WinesComponent implements OnInit {
 
-  constructor() { }
+  public wines:any[];
+  constructor(protected winesService:WinesService) {
+    this.wines = this.winesService.getWines();
+  }
 
   ngOnInit(): void {
   }
