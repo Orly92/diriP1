@@ -5,7 +5,7 @@ import {WinesComponent} from "./wines/wines.component";
 import {ContactComponent} from "./contact/contact.component";
 
 const routes: Routes = [{
-  path:'',
+  path:'inicio',
   component:HomeComponent,
   pathMatch:'full'
 },{
@@ -16,6 +16,10 @@ const routes: Routes = [{
   path:'contacto',
   component:ContactComponent,
   pathMatch:'full'
+},{
+  path: '**',
+  pathMatch: 'full',
+  redirectTo: 'inicio'
 }];
 
 @NgModule({
