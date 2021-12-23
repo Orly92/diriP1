@@ -1,4 +1,7 @@
 <div class="row">
-  <h3>{{title}}</h3>
+  <div class="col title">
+    <h3 class="row-title">{{title}}</h3>
+    <p *ngIf="!!detail" class="m-2">({{detail}})</p>
+  </div>
   <hr/>
 </div>

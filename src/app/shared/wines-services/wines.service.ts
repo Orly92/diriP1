@@ -151,4 +151,8 @@ export class WinesService {
   searchWines(name:string) : WineModel[]{
    return this.wines.filter(wine=>wine.nombre.toLowerCase().includes(name.toLowerCase()));
   }
+
+  getWine(id:number){
+    return this.wines.find(wine=>wine.id == id);
+  }
 }

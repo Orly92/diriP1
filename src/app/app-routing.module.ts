@@ -18,7 +18,7 @@ const routes: Routes = [{
   component:WinesComponent,
   pathMatch:'full'
 },{
-  path:'listavinos/:wineId',
+  path:'vino/:wineId',
   component:WineDetailComponent,
   pathMatch:'full'
 },{
