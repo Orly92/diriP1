@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WinesService} from "../shared/wines-services/wines.service";
 import {ActivatedRoute} from "@angular/router";
+import {WineModel} from "../shared/model/wine.model";
 
 @Component({
   selector: 'wines',
@@ -9,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class WinesComponent implements OnInit {
 
-  public wines:any[];
+  public wines:WineModel[];
   constructor(protected winesService:WinesService,protected router:ActivatedRoute) {
     this.wines = [];
 

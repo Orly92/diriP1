@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import {WineModel} from "../model/wine.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class WinesService {
 
-  protected wines: any[];
+  protected wines: WineModel[];
   constructor() {
     this.wines = [
       {
@@ -143,11 +144,11 @@ export class WinesService {
     ];
   }
 
-  getWines(){
+  getWines() : WineModel[]{
     return this.wines;
   }
 
-  searchWines(name:string){
+  searchWines(name:string) : WineModel[]{
    return this.wines.filter(wine=>wine.nombre.toLowerCase().includes(name.toLowerCase()));
   }
 }
