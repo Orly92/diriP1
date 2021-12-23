@@ -13,6 +13,11 @@ const routes: Routes = [{
   component:WinesComponent,
   pathMatch:'full'
 },{
+  path:'listavinos/:name',
+  component:WinesComponent,
+  pathMatch:'full'
+},
+  {
   path:'contacto',
   component:ContactComponent,
   pathMatch:'full'

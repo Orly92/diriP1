@@ -2,7 +2,8 @@
   <img src="../../assets/img/{{wine.imagen}}" class="card-img-top">
   <div class="card-body">
     <h5 class="card-title">{{wine.nombre}}</h5>
-    <p class="card-text">{{wine.descripcion}}</p>
-    <a href="#" class="btn btn-outline-primary">Ver más</a>
+    <p class="card-text">{{wine.descripcion  | slice:0:70}}</p>
+    <p class="card-text">{{wine.precio | currency:'EUR'}}</p>
+    <button type="button" class="btn btn-outline-primary">Ver más</button>
   </div>
 </div>

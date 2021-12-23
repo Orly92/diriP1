@@ -9,6 +9,7 @@ import { WinesComponent } from './wines/wines.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageTitleComponent } from './shared/page-title/page-title.component';
 import { WineCardComponent } from './shared/wine-card/wine-card.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WineCardComponent } from './shared/wine-card/wine-card.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

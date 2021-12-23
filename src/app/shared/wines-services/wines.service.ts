@@ -148,6 +148,6 @@ export class WinesService {
   }
 
   searchWines(name:string){
-    return this.wines.find(wine=>wine.name.includes(name));
+   return this.wines.filter(wine=>wine.nombre.toLowerCase().includes(name.toLowerCase()));
   }
 }
