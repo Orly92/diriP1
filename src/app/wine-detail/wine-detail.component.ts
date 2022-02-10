@@ -27,12 +27,17 @@ export class WineDetailComponent implements OnInit {
       descripcion:"",
       anyo:0
     }
-    router.params.subscribe(params=>{
-      this.wine = <WineModel>this.winesService.getWine(params["wineId"]);
-    })
+
   }
 
   ngOnInit(): void {
+    this.router.params.subscribe(params=>{
+      this.winesService.getWine(params["wineId"]).subscribe(resp=>{
+        this.wine = <WineModel>resp;
+      },err=>{
+
+      });
+    })
   }
 
   redirectToBack() {

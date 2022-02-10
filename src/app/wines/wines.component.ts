@@ -16,9 +16,17 @@ export class WinesComponent implements OnInit {
 
     router.params.subscribe(params=>{
       if(params["name"] !== undefined){
-        this.wines = this.winesService.searchWines(params["name"]);
+        this.winesService.searchWines(params["name"]).subscribe(resp=>{
+          this.wines = <WineModel[]>resp;
+        },err=>{
+
+        });
       }else{
-        this.wines = this.winesService.getWines();
+       this.winesService.getWines().subscribe(resp=>{
+         this.wines = <WineModel[]>resp;
+        },err=>{
+
+        });
       }
     })
   }

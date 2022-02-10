@@ -11,6 +11,8 @@ import { PageTitleComponent } from './shared/page-title/page-title.component';
 import { WineCardComponent } from './shared/wine-card/wine-card.component';
 import {FormsModule} from "@angular/forms";
 import { WineDetailComponent } from './wine-detail/wine-detail.component';
+import {HttpClientModule} from "@angular/common/http";
+import { ErrorComponent } from './shared/error/error.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { WineDetailComponent } from './wine-detail/wine-detail.component';
     ContactComponent,
     PageTitleComponent,
     WineCardComponent,
-    WineDetailComponent
+    WineDetailComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
