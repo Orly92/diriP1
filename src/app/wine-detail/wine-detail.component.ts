@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WineModel} from "../shared/model/wine.model";
-import {WinesService} from "../shared/wines-services/wines.service";
+import {WinesService} from "../shared/services/wines-services/wines.service";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common';
 

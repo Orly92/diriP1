@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {WineModel} from "../model/wine.model";
+import {WineModel} from "../../model/wine.model";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {WinesService} from "../shared/wines-services/wines.service";
+import {WinesService} from "../shared/services/wines-services/wines.service";
 import {ActivatedRoute} from "@angular/router";
 import {WineModel} from "../shared/model/wine.model";
+import {ErrorModel} from "../shared/model/error.model";
+import {ErrorService} from "../shared/services/error-services/error.service";
 
 @Component({
   selector: 'wines',
@@ -11,7 +13,9 @@ import {WineModel} from "../shared/model/wine.model";
 export class WinesComponent implements OnInit {
 
   public wines:WineModel[];
-  constructor(protected winesService:WinesService,protected router:ActivatedRoute) {
+  public errors:ErrorModel[] = [];
+
+  constructor(protected winesService:WinesService,protected router:ActivatedRoute,protected errorService:ErrorService) {
     this.wines = [];
 
     router.params.subscribe(params=>{
@@ -19,13 +23,13 @@ export class WinesComponent implements OnInit {
         this.winesService.searchWines(params["name"]).subscribe(resp=>{
           this.wines = <WineModel[]>resp;
         },err=>{
-
+          this.errors = this.errorService.processError(err);
         });
       }else{
        this.winesService.getWines().subscribe(resp=>{
          this.wines = <WineModel[]>resp;
         },err=>{
-
+         this.errors = this.errorService.processError(err);
         });
       }
     })
