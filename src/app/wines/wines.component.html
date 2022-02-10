@@ -2,7 +2,7 @@
 
 <error *ngIf="errors.length > 0" [errors]="errors"></error>
 
-<div class="row mb-4">
+<div *ngIf="errors.length == 0" class="row mb-4">
   <div class="col col-md-4 mb-2" *ngFor="let wine of wines">
     <wine-card [wine]="wine"></wine-card>
   </div>

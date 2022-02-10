@@ -3,6 +3,8 @@ import {WineModel} from "../shared/model/wine.model";
 import {WinesService} from "../shared/services/wines-services/wines.service";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common';
+import {ErrorModel} from "../shared/model/error.model";
+import {ErrorService} from "../shared/services/error-services/error.service";
 
 @Component({
   selector: 'wine-detail',
@@ -12,10 +14,11 @@ import {Location} from '@angular/common';
 export class WineDetailComponent implements OnInit {
 
   public wine:WineModel;
-  public detailTitle: string;
+  public detailTitle: string = "";
+  public errors: ErrorModel[] = [];
 
-  constructor(protected winesService:WinesService,protected router:ActivatedRoute,protected location:Location) {
-    this.detailTitle = "";
+  constructor(protected winesService:WinesService,protected router:ActivatedRoute,protected location:Location,
+              protected errorService:ErrorService) {
     this.wine = {
       precio:0,
       nombre:"",
@@ -35,7 +38,7 @@ export class WineDetailComponent implements OnInit {
       this.winesService.getWine(params["wineId"]).subscribe(resp=>{
         this.wine = <WineModel>resp;
       },err=>{
-
+        this.errors = this.errorService.processError(err);
       });
     })
   }

@@ -1,6 +1,8 @@
 <page-title [title]="wine.nombre | uppercase" [detail]="wine.precio | currency:'EUR'"></page-title>
 
-<div class="card mb-3">
+<error *ngIf="errors.length > 0" [errors]="errors"></error>
+
+<div *ngIf="errors.length == 0" class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
       <img src="../../assets/img/{{wine.imagen}}" class="card-img mb-4">
