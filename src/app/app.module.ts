@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ErrorComponent } from './shared/error/error.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NewWineComponent } from './new-wine/new-wine.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     PageTitleComponent,
     WineCardComponent,
     WineDetailComponent,
-    ErrorComponent
+    ErrorComponent,
+    NewWineComponent
   ],
   imports: [
     BrowserModule,

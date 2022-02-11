@@ -8,14 +8,9 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
   public searchParam: string;
-  private sidebarVisible: boolean;
-
-  @ViewChild("menu")
-  protected menu: ElementRef | undefined;
 
   constructor(protected router: Router,protected renderer:Renderer2) {
     this.searchParam = "";
-    this.sidebarVisible = false;
   }
 
   ngOnInit(): void {
@@ -25,15 +20,4 @@ export class HeaderComponent implements OnInit {
    this.router.navigate(['/listavinos/' + this.searchParam]);
   }
 
-  sidebarToggle() {
-    let removeClassName = "showMenu";
-    let addClassName = "hideMenu";
-    if (!this.sidebarVisible) {
-      removeClassName = "hideMenu";
-      addClassName = "showMenu";
-    }
-    this.renderer.removeClass(this.menu?.nativeElement,removeClassName);
-    this.renderer.addClass(this.menu?.nativeElement,addClassName);
-    this.sidebarVisible = !this.sidebarVisible;
-  }
 }

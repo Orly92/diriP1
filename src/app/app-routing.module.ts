@@ -4,6 +4,7 @@ import {HomeComponent} from "./home/home.component";
 import {WinesComponent} from "./wines/wines.component";
 import {ContactComponent} from "./contact/contact.component";
 import {WineDetailComponent} from "./wine-detail/wine-detail.component";
+import {NewWineComponent} from "./new-wine/new-wine.component";
 
 const routes: Routes = [{
   path:'inicio',
@@ -26,7 +27,11 @@ const routes: Routes = [{
   component:ContactComponent,
   pathMatch:'full'
 },{
-  path: '**',
+  path:'crearvino',
+  component:NewWineComponent,
+  pathMatch:'full'
+},{
+  path: '*',
   pathMatch: 'full',
   redirectTo: 'inicio'
 }];

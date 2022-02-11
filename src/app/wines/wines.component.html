@@ -1,17 +1,12 @@
-<div class="row">
-  <page-title [title]="'Vinos'"></page-title>
+<page-title [title]="'Vinos'"></page-title>
 
-  <ngx-spinner size = "medium" type="ball-spin-clockwise" [fullScreen] = "true"></ngx-spinner>
+<ngx-spinner size = "medium" type="ball-spin-clockwise" [fullScreen] = "true"></ngx-spinner>
 
-  <error *ngIf="errors.length > 0" [errors]="errors"></error>
+<error *ngIf="errors.length > 0" [errors]="errors"></error>
 
-  <div *ngIf="errors.length == 0" class="row mb-4">
+<div *ngIf="errors.length == 0" class="row mb-4">
 
-    <div class="col col-md-4 mb-2" *ngFor="let wine of wines">
-      <wine-card [wine]="wine"></wine-card>
-    </div>
+  <div class="col col-md-4 mb-2" *ngFor="let wine of wines">
+    <wine-card [wine]="wine"></wine-card>
   </div>
-
-
-
 </div>
