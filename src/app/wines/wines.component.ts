@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {WineModel} from "../shared/model/wine.model";
 import {ErrorModel} from "../shared/model/error.model";
 import {ErrorService} from "../shared/services/error-services/error.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'wines',
@@ -12,30 +13,39 @@ import {ErrorService} from "../shared/services/error-services/error.service";
 })
 export class WinesComponent implements OnInit {
 
-  public wines:WineModel[];
+  public wines:WineModel[] = [];
   public errors:ErrorModel[] = [];
 
-  constructor(protected winesService:WinesService,protected router:ActivatedRoute,protected errorService:ErrorService) {
-    this.wines = [];
+  constructor(protected winesService:WinesService,
+              protected router:ActivatedRoute,
+              protected errorService:ErrorService,
+              protected spinner:NgxSpinnerService) {
 
-    router.params.subscribe(params=>{
+  }
+
+  ngOnInit(): void {
+    this.spinner.show();
+
+    this.router.params.subscribe(params=>{
       if(params["name"] !== undefined){
         this.winesService.searchWines(params["name"]).subscribe(resp=>{
+          this.spinner.hide();
           this.wines = <WineModel[]>resp;
         },err=>{
+          this.spinner.hide();
           this.errors = this.errorService.processError(err);
         });
       }else{
-       this.winesService.getWines().subscribe(resp=>{
-         this.wines = <WineModel[]>resp;
+        this.winesService.getWines().subscribe(resp=>{
+          this.spinner.hide();
+          this.wines = <WineModel[]>resp;
         },err=>{
-         this.errors = this.errorService.processError(err);
+          this.spinner.hide();
+          this.errors = this.errorService.processError(err);
         });
       }
     })
   }
 
-  ngOnInit(): void {
-  }
 
 }

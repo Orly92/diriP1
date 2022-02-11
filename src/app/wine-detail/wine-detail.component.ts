@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common';
 import {ErrorModel} from "../shared/model/error.model";
 import {ErrorService} from "../shared/services/error-services/error.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'wine-detail',
@@ -17,8 +18,11 @@ export class WineDetailComponent implements OnInit {
   public detailTitle: string = "";
   public errors: ErrorModel[] = [];
 
-  constructor(protected winesService:WinesService,protected router:ActivatedRoute,protected location:Location,
-              protected errorService:ErrorService) {
+  constructor(protected winesService:WinesService,
+              protected router:ActivatedRoute,
+              protected location:Location,
+              protected errorService:ErrorService,
+              protected spinner:NgxSpinnerService) {
     this.wine = {
       precio:0,
       nombre:"",
@@ -34,10 +38,14 @@ export class WineDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
+
     this.router.params.subscribe(params=>{
       this.winesService.getWine(params["wineId"]).subscribe(resp=>{
+        this.spinner.hide();
         this.wine = <WineModel>resp;
       },err=>{
+        this.spinner.hide();
         this.errors = this.errorService.processError(err);
       });
     })

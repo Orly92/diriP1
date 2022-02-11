@@ -1,5 +1,7 @@
 <page-title [title]="wine.nombre | uppercase" [detail]="wine.precio | currency:'EUR'"></page-title>
 
+<ngx-spinner size = "medium" type="ball-spin-clockwise" [fullScreen] = "true"></ngx-spinner>
+
 <error *ngIf="errors.length > 0" [errors]="errors"></error>
 
 <div *ngIf="errors.length == 0" class="card mb-3">
