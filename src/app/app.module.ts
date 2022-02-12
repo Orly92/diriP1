@@ -9,7 +9,7 @@ import { WinesComponent } from './wines/wines.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageTitleComponent } from './shared/page-title/page-title.component';
 import { WineCardComponent } from './shared/wine-card/wine-card.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { WineDetailComponent } from './wine-detail/wine-detail.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ErrorComponent } from './shared/error/error.component';
@@ -36,7 +36,8 @@ import { NewWineComponent } from './new-wine/new-wine.component';
     HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

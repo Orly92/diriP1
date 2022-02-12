@@ -31,7 +31,7 @@ const routes: Routes = [{
   component:NewWineComponent,
   pathMatch:'full'
 },{
-  path: '*',
+  path: '**',
   pathMatch: 'full',
   redirectTo: 'inicio'
 }];

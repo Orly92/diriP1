@@ -1,1 +1,66 @@
-<page-title [title]="'Crear Vino'"></page-title>
+<page-title [title]="'Nuevo Vino'"></page-title>
+
+<form [formGroup]="form">
+  <div class="row mb-3">
+    <div class="col col-md-7">
+      <label for="InputName" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="InputName" formControlName="nombre"
+             [ngClass]="{ 'is-invalid':nombre?.invalid && (nombre?.touched || formTryToSubmited)}">
+      <div id="nombrerequiredFeedBack" class="invalid-feedback" *ngIf="nombre?.invalid && nombre?.errors?.['required']">
+        Nos podrías decir por favor el nombre del vino?
+      </div>
+      <div id="nombreMinLnFeedBack" class="invalid-feedback" *ngIf="nombre?.invalid && nombre?.errors?.['minlength']">
+        El nombre debe contener al menos 3 letras
+      </div>
+      <div id="nombreMaxLnFeedBack" class="invalid-feedback" *ngIf="nombre?.invalid && nombre?.errors?.['maxlength']">
+        El nombre debe contener como máximo 60 letras
+      </div>
+    </div>
+    <div class="col col-md-5">
+      <label for="InputUvas" class="form-label">Uvas</label>
+      <input type="text" class="form-control" id="InputUvas" formControlName="uvas"
+             [ngClass]="{ 'is-invalid':uvas?.invalid && (uvas?.touched || formTryToSubmited)}">
+      <div id="uvasrequiredFeedBack" class="invalid-feedback" *ngIf="uvas?.invalid && uvas?.errors?.['required']">
+        Nos podrías decir por favor el tipo de uvas?
+      </div>
+    </div>
+
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="InputDesc" class="form-label">Descripción</label>
+      <input type="text" class="form-control" id="InputDesc" formControlName="descripcion">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col col-md-2">
+      <label for="InputAnyo" class="form-label">Año</label>
+      <input type="number" class="form-control" id="InputAnyo" formControlName="anyo"
+             [ngClass]="{ 'is-invalid':anyo?.invalid && (anyo?.touched || formTryToSubmited)}">
+      <div id="anyorequiredFeedBack" class="invalid-feedback" *ngIf="anyo?.invalid && anyo?.errors?.['required']">
+        Nos podrías decir por favor el año?
+      </div>
+    </div>
+    <div class="col col-md-2">
+      <label for="InputPrice" class="form-label">Precio</label>
+      <input type="number" class="form-control" id="InputPrice" formControlName="precio">
+    </div>
+    <div class="col col-md-2">
+      <label for="InputCountry" class="form-label">País</label>
+      <select class="form-select" id="InputCountry" formControlName="pais" required>
+        <option value="">Elija un país</option>
+        <option *ngFor="let country of countries" [value]="country">
+          {{country}}</option>
+      </select>
+    </div>
+    <div class="col col-md-3">
+      <label for="InputRegion" class="form-label">Region</label>
+      <input type="text" class="form-control" id="InputRegion" formControlName="region">
+    </div>
+    <div class="col col-md-3">
+      <label for="InputImage" class="form-label">Imagen</label>
+      <input type="number" class="form-control" id="InputImage" formControlName="imagen">
+    </div>
+  </div>
+  <button  (click)="onSubmit()" type="submit" class="btn btn-primary">Crear</button>
+</form>
