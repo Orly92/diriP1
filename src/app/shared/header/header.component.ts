@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
+import {LoginService} from "../services/login-service/login.service";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
   public searchParam: string;
 
-  constructor(protected router: Router,protected renderer:Renderer2) {
+  constructor(protected router: Router,protected renderer:Renderer2,
+              public loginService:LoginService) {
     this.searchParam = "";
   }
 
@@ -20,4 +22,7 @@ export class HeaderComponent implements OnInit {
    this.router.navigate(['/listavinos/' + this.searchParam]);
   }
 
+  logout() {
+    this.loginService.logout();
+  }
 }

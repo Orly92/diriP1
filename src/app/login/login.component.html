@@ -1,0 +1,23 @@
+<page-title [title]="'Loguearse en el sitio'"></page-title>
+
+<form [formGroup]="form">
+  <div class="mb-3">
+    <label for="InputUsername" class="form-label">Username</label>
+    <input type="text" class="form-control" id="InputUsername" formControlName="usuario"
+           [ngClass]="{ 'is-invalid':usuario?.invalid && (usuario?.touched || formTryToSubmited)}">
+    <div id="usuariorequiredFeedBack" class="invalid-feedback" *ngIf="usuario?.invalid && usuario?.errors?.['required']">
+      Nos podrías decir el usuario?
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password"
+           [ngClass]="{ 'is-invalid':password?.invalid && (password?.touched || formTryToSubmited)}">
+    <div id="passwordrequiredFeedBack" class="invalid-feedback" *ngIf="password?.invalid && password?.errors?.['required']">
+      Nos podrías decir la contraseña?
+    </div>
+  </div>
+  <button (click)="onSubmit()" type="submit" class="btn btn-primary">Loguearse</button>
+</form>
+
+<ngx-spinner size = "medium" type="ball-spin-clockwise" [fullScreen] = "true"></ngx-spinner>

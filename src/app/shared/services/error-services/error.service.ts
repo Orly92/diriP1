@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import {ErrorModel} from "../../model/error.model";
+import {AppToastService} from "../app-toast/app-toast.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorService {
 
-  constructor() { }
+  constructor(protected appToastService:AppToastService) { }
 
-  public processError(err:any): ErrorModel[]{
+  public processError(err:any,showToast:boolean = true): ErrorModel[]{
     let message = err.message;
     switch (err.status) {
       case 0:
@@ -24,6 +25,9 @@ export class ErrorService {
         message = "Token no generado";
         break;
     }
+    if(showToast)
+      this.appToastService.show('Error!',message,'danger');
+
     return [{
       message:message
     }];

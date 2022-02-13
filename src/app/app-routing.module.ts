@@ -5,6 +5,7 @@ import {WinesComponent} from "./wines/wines.component";
 import {ContactComponent} from "./contact/contact.component";
 import {WineDetailComponent} from "./wine-detail/wine-detail.component";
 import {NewWineComponent} from "./new-wine/new-wine.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [{
   path:'inicio',
@@ -29,6 +30,10 @@ const routes: Routes = [{
 },{
   path:'crearvino',
   component:NewWineComponent,
+  pathMatch:'full'
+},{
+  path:'login',
+  component:LoginComponent,
   pathMatch:'full'
 },{
   path: '**',

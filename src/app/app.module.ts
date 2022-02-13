@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NewWineComponent } from './new-wine/new-wine.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppToastComponent } from './shared/app-toast/app-toast.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AppToastComponent } from './shared/app-toast/app-toast.component';
     WineDetailComponent,
     ErrorComponent,
     NewWineComponent,
-    AppToastComponent
+    AppToastComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

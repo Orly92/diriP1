@@ -30,6 +30,20 @@
                  aria-label="Search" [(ngModel)]="searchParam" (keyup.enter)="searchWines()">
           <button class="btn btn-outline-primary" type="button" (click)="searchWines()">Buscar</button>
         </form>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle" id="navbarLoginDropdownMenuLink"
+               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span *ngIf="!loginService.isLogged">Entrar o registrarse</span>
+              <span *ngIf="loginService.isLogged">Bienvenido {{loginService.userName}}</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarLoginDropdownMenuLink">
+              <li *ngIf="!loginService.isLogged"><a class="dropdown-item" routerLinkActive="active" [routerLink]="['login']">Loguearse</a></li>
+              <li *ngIf="!loginService.isLogged"><a class="dropdown-item" routerLinkActive="active" [routerLink]="['‘registro’']">Registrarse</a></li>
+              <li *ngIf="loginService.isLogged"><a class="dropdown-item" (click)="logout()">Desloguearse</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
