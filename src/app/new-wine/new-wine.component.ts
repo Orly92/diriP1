@@ -68,7 +68,7 @@ export class NewWineComponent implements OnInit {
   showError(err: any) {
     const error = this.errorService.processError(err);
     // @ts-ignore
-    this.appToastService.show('Error!',error[0],'danger');
+    this.appToastService.show('Error!',error[0].message,'danger');
     this.spinner.hide();
   }
 
