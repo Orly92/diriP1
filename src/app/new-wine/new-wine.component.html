@@ -40,10 +40,23 @@
       <div id="anyorequiredFeedBack" class="invalid-feedback" *ngIf="anyo?.invalid && anyo?.errors?.['required']">
         Nos podrías decir por favor el año?
       </div>
+      <div id="anyorminFeedBack" class="invalid-feedback" *ngIf="anyo?.invalid && anyo?.errors?.['min']">
+        El año debe ser a partir de 1900
+      </div>
+      <div id="anyormaxFeedBack" class="invalid-feedback" *ngIf="anyo?.invalid && anyo?.errors?.['max']">
+        El año no debe ser mayor que el actual
+      </div>
     </div>
     <div class="col col-md-2">
       <label for="InputPrice" class="form-label">Precio</label>
-      <input type="number" class="form-control" id="InputPrice" formControlName="precio">
+      <input type="number" class="form-control" id="InputPrice" formControlName="precio"
+             [ngClass]="{ 'is-invalid':precio?.invalid && (precio?.touched || formTryToSubmited)}">
+      <div id="preciorequiredFeedBack" class="invalid-feedback" *ngIf="precio?.invalid && precio?.errors?.['required']">
+        Nos podrías decir por favor el precio?
+      </div>
+      <div id="preciorminFeedBack" class="invalid-feedback" *ngIf="precio?.invalid && precio?.errors?.['min']">
+        El precio debe ser positivo
+      </div>
     </div>
     <div class="col col-md-2">
       <label for="InputCountry" class="form-label">País</label>

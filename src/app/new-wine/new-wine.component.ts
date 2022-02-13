@@ -39,10 +39,19 @@ export class NewWineComponent implements OnInit {
 
   public onSubmit(){
     this.formTryToSubmited = true;
-    console.log(this.form.get('nombre'));
     if(!this.form.invalid){
-      alert("Todo OK");
+      this.wineService.getLastWine().subscribe(resp=>{
+        // @ts-ignore
+        this.form.value.id = resp[0].id + 1;
 
+        this.wineService.addWine(this.form.value).subscribe((resp: any)=>{
+          alert("bien");
+        },(err:any)=>{
+          alert("error 2");
+        })
+      },err=>{
+        alert("error 1");
+      });
     }
   }
 
@@ -54,5 +63,8 @@ export class NewWineComponent implements OnInit {
   }
   get anyo(){
     return this.form?.get("anyo");
+  }
+  get precio(){
+    return this.form?.get("precio");
   }
 }
