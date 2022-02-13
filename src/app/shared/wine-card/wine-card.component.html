@@ -1,5 +1,6 @@
 <div class="card" >
-  <img src="../../assets/img/{{wine.imagen}}" class="card-img-top">
+  <img src="../../assets/img/{{wine.imagen}}" class="card-img-top"
+       (error)="handleMissingImage($event)">
   <div class="card-body">
     <h5 class="card-title">{{wine.nombre}}</h5>
     <p class="card-text">{{wine.descripcion  | slice:0:70}}</p>

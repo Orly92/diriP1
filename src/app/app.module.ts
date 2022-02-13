@@ -16,6 +16,8 @@ import { ErrorComponent } from './shared/error/error.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NewWineComponent } from './new-wine/new-wine.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppToastComponent } from './shared/app-toast/app-toast.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { NewWineComponent } from './new-wine/new-wine.component';
     WineCardComponent,
     WineDetailComponent,
     ErrorComponent,
-    NewWineComponent
+    NewWineComponent,
+    AppToastComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { NewWineComponent } from './new-wine/new-wine.component';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

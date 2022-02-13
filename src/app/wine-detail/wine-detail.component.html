@@ -7,7 +7,8 @@
 <div *ngIf="errors.length == 0" class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img src="../../assets/img/{{wine.imagen}}" class="card-img mb-4">
+      <img src="../../assets/img/{{wine.imagen}}" class="card-img mb-4"
+           (error)="handleMissingImage($event)">
       <button type="button" class="btn btn-outline-danger full-large" (click)="redirectToBack()">Volver</button>
     </div>
     <div class="col-md-8">

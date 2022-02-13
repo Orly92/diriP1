@@ -14,4 +14,7 @@ export class WineCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleMissingImage($event: any) {
+    ($event.target as HTMLImageElement).src = '../../assets/img/noimage.png';
+  }
 }

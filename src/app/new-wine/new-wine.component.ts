@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {WinesService} from "../shared/services/wines-services/wines.service";
 import {DataService} from "../shared/services/data-service/data.service";
+import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
+import {AppToastService} from "../shared/services/app-toast/app-toast.service";
+import {ErrorService} from "../shared/services/error-services/error.service";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-new-wine',
@@ -16,7 +20,10 @@ export class NewWineComponent implements OnInit {
 
   constructor(protected formBuilder:FormBuilder,
               protected wineService:WinesService,
-              protected dataService:DataService) {
+              protected dataService:DataService,
+              protected appToastService:AppToastService,
+              protected errorService:ErrorService,
+              protected spinner:NgxSpinnerService) {
 
     this.countries = dataService.getCountries();
 
@@ -39,20 +46,30 @@ export class NewWineComponent implements OnInit {
 
   public onSubmit(){
     this.formTryToSubmited = true;
+
     if(!this.form.invalid){
+      this.spinner.show();
       this.wineService.getLastWine().subscribe(resp=>{
         // @ts-ignore
         this.form.value.id = resp[0].id + 1;
 
         this.wineService.addWine(this.form.value).subscribe((resp: any)=>{
-          alert("bien");
+          this.appToastService.show('Vino Creado!','Vino creado exitosamente','success');
+          this.spinner.hide();
         },(err:any)=>{
-          alert("error 2");
+          this.showError(err);
         })
       },err=>{
-        alert("error 1");
+        this.showError(err);
       });
     }
+  }
+
+  showError(err: any) {
+    const error = this.errorService.processError(err);
+    // @ts-ignore
+    this.appToastService.show('Error!',error[0],'danger');
+    this.spinner.hide();
   }
 
   get nombre(){
