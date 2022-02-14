@@ -6,6 +6,7 @@ import {ContactComponent} from "./contact/contact.component";
 import {WineDetailComponent} from "./wine-detail/wine-detail.component";
 import {NewWineComponent} from "./new-wine/new-wine.component";
 import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 
 const routes: Routes = [{
   path:'inicio',
@@ -34,6 +35,10 @@ const routes: Routes = [{
 },{
   path:'login',
   component:LoginComponent,
+  pathMatch:'full'
+},{
+  path:'registro',
+  component:RegisterComponent,
   pathMatch:'full'
 },{
   path: '**',

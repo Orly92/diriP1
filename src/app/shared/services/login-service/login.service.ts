@@ -32,4 +32,8 @@ export class LoginService {
     this.userName = "";
     this.toastService.show('Deslogueado!','Se ha deslogueado del sistema','success');
   }
+
+  getUsers(){
+    return this.http.get(this.userUrl);
+  }
 }

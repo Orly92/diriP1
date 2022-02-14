@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginService} from "../shared/services/login-service/login.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {LoginService} from "../shared/services/login-service/login.service";
 import {AppToastService} from "../shared/services/app-toast/app-toast.service";
 import {NgxSpinnerService} from "ngx-spinner";
-import {HttpClient} from "@angular/common/http";
 import {ErrorService} from "../shared/services/error-services/error.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   public form: FormGroup;
   public formTryToSubmited: boolean = false;
@@ -47,21 +46,27 @@ export class LoginComponent implements OnInit {
       this.spinner.show();
 
       // @ts-ignore
-      this.loginService.getUser(this.form.value).subscribe((resp:any[]) =>{
-        if(resp.length > 0){
-          this.toastService.show('Usuario logueado!','Se ha logueado en nuestro sistema','success');
-          this.loginService.login(resp[0].usuario);
+      this.loginService.getUsers().subscribe((resp:any[])=>{
+        const lastId = resp.reduce((accumulateValue,currentValue)=>{
+          return Math.max(accumulateValue?.id ?? 0,currentValue?.id ?? 0);
+        });
+        this.form.value.id = lastId + 1;
+        // @ts-ignore
+        this.loginService.register(this.form.value).subscribe((resp:any) =>{
+          this.spinner.hide();
+          this.toastService.show('Usuario registrado!','Se ha registrado en nuestro sistema','success');
+          this.loginService.login(resp.usuario);
           this.router.navigate(['inicio']);
-        }
-        else{
-          this.toastService.show('Credenciales Incorrectas!',
-            'No existe ningún usuario con esas credenciales','danger');
-        }
-        this.spinner.hide();
+        },err=>{
+          this.errorService.processError(err);
+          this.spinner.hide();
+        });
       },err=>{
         this.errorService.processError(err);
         this.spinner.hide();
       });
+
     }
   }
 }
+

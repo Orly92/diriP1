@@ -39,7 +39,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarLoginDropdownMenuLink">
               <li *ngIf="!loginService.isLogged"><a class="dropdown-item" routerLinkActive="active" [routerLink]="['login']">Loguearse</a></li>
-              <li *ngIf="!loginService.isLogged"><a class="dropdown-item" routerLinkActive="active" [routerLink]="['‘registro’']">Registrarse</a></li>
+              <li *ngIf="!loginService.isLogged"><a class="dropdown-item" routerLinkActive="active" [routerLink]="['registro']">Registrarse</a></li>
               <li *ngIf="loginService.isLogged"><a class="dropdown-item" (click)="logout()">Desloguearse</a></li>
             </ul>
           </li>
