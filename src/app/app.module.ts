@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppToastComponent } from './shared/app-toast/app-toast.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -45,10 +46,13 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBEVLuALTNr5HLHfj6OgQ53ah-HvTS0lG8'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

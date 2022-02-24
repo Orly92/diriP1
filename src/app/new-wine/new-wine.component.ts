@@ -2,7 +2,6 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {WinesService} from "../shared/services/wines-services/wines.service";
 import {DataService} from "../shared/services/data-service/data.service";
-import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
 import {AppToastService} from "../shared/services/app-toast/app-toast.service";
 import {ErrorService} from "../shared/services/error-services/error.service";
 import {NgxSpinnerService} from "ngx-spinner";
@@ -26,6 +25,7 @@ export class NewWineComponent implements OnInit {
               protected spinner:NgxSpinnerService) {
 
     this.countries = dataService.getCountries();
+
 
     this.form =this.formBuilder.group({
       'nombre': new FormControl('',[Validators.required,
